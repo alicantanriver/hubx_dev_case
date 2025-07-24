@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hubx_dev_case/routes/app_router.dart';
+import 'routes/app_router.dart';
 
 void main() {
-  final _appRouter = AppRouter();
-  runApp(MyApp(router: _appRouter));
+  final appRouter = AppRouter();
+  runApp(MyApp(router: appRouter));
 }
 
 class MyApp extends StatelessWidget {
   final AppRouter router;
-  const MyApp({required this.router});
+
+  const MyApp({super.key, required this.router});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Case App',
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      routerDelegate: router.delegate(),
-      routeInformationParser: router.defaultRouteParser(),
+      routerConfig: router.config(),
     );
   }
 }

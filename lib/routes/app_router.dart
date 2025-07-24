@@ -1,12 +1,14 @@
 import 'package:auto_route/auto_route.dart';
-import '../features/onboarding/presentation/onboarding_screen.dart';
 import '../features/home/presentation/home_screen.dart';
+import '../features/onboarding/presentation/onboarding_screen.dart';
 
-@MaterialAutoRouter(
-  replaceInRouteName: 'Screen,Route',
-  routes: <AutoRoute>[
-    AutoRoute(page: OnboardingScreen, initial: true),
-    AutoRoute(page: HomeScreen),
-  ],
-)
-class AppRouter {}
+part 'app_router.gr.dart';
+
+@AutoRouterConfig(replaceInRouteName: 'Screen,Route')
+class AppRouter extends _$AppRouter {
+  @override
+  List<AutoRoute> get routes => [
+        AutoRoute(page: OnboardingRoute.page, initial: true),
+        AutoRoute(page: HomeRoute.page),
+      ];
+}
