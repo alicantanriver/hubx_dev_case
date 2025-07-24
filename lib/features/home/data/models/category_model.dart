@@ -10,6 +10,10 @@ class CategoryModel with _$CategoryModel {
     required String name,
   }) = _CategoryModel;
 
-  factory CategoryModel.fromJson(Map<String, dynamic> json) =>
-      _$CategoryModelFromJson(json);
+  factory CategoryModel.fromJson(Map<String, dynamic> json) {
+    return CategoryModel(
+      id: json['id'].toString(), // Always a String
+      name: json['name'] as String,
+    );
+  }
 }
