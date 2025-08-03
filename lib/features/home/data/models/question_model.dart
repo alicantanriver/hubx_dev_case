@@ -13,6 +13,13 @@ class QuestionModel with _$QuestionModel {
     required String answer,
   }) = _QuestionModel;
 
-  factory QuestionModel.fromJson(Map<String, dynamic> json) =>
-      _$QuestionModelFromJson(json);
+  factory QuestionModel.fromJson(Map<String, dynamic> json) {
+    return QuestionModel(
+      id: json['id'].toString(),
+      categoryId: json['categoryId'].toString(),
+      question: (json['question'] ?? '') as String, // Safe fallback
+      options: List<String>.from(json['options'] ?? []),
+      answer: (json['answer'] ?? '') as String,
+    );
+  }
 }
